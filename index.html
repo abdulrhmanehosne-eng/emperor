@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlElement">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="إمبراطور الفراغ - معرض الأعمال والتواصل الشخصي">
+    <meta name="keywords" content="إمبراطور الفراغ, Void Emperor, مملكة الفراغ, الذكاء الاصطناعي, معرض أعمال">
+    <meta name="author" content="إمبراطور الفراغ">
+    
+    <title>إمبراطور الفراغ - معرض الأعمال والتواصل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-crown"></i>
+                <span class="site-title" lang="ar">إمبراطور الفراغ</span>
+                <span class="site-title hidden" lang="en">Void Emperor</span>
+            </div>
+            
+            <div class="nav-menu">
+                <!-- Dark Mode Toggle -->
+                <button class="nav-btn" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun hidden"></i>
+                </button>
+                
+                <!-- Language Toggle -->
+                <button class="nav-btn" id="languageToggle">
+                    <i class="fas fa-language"></i>
+                    <span class="lang-text" lang="ar">English</span>
+                    <span class="lang-text hidden" lang="en">العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1 class="title">
+                <i class="fas fa-crown"></i>
+                <span class="site-title" lang="ar">إمبراطور الفراغ</span>
+                <span class="site-title hidden" lang="en">Void Emperor</span>
+                <i class="fas fa-crown"></i>
+            </h1>
+            <p class="subtitle" lang="ar">معرض الأعمال والإنجازات الشخصية - مملكة الفراغ اللامتناهية</p>
+            <p class="subtitle hidden" lang="en">Personal Portfolio & Achievements - Infinite Void Kingdom</p>
+        </header>
+        
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="about">
+                <i class="fas fa-user"></i>
+                <span lang="ar">نبذة عني</span>
+                <span class="hidden" lang="en">About Me</span>
+            </button>
+            <button class="tab-btn" data-tab="achievements">
+                <i class="fas fa-trophy"></i>
+                <span lang="ar">الإنجازات</span>
+                <span class="hidden" lang="en">Achievements</span>
+            </button>
+            <button class="tab-btn" data-tab="portfolio">
+                <i class="fas fa-briefcase"></i>
+                <span lang="ar">معرض الأعمال</span>
+                <span class="hidden" lang="en">Portfolio</span>
+            </button>
+            <button class="tab-btn" data-tab="games">
+                <i class="fas fa-gamepad"></i>
+                <span lang="ar">الألعاب</span>
+                <span class="hidden" lang="en">Games</span>
+            </button>
+            <button class="tab-btn" data-tab="ai">
+                <i class="fas fa-robot"></i>
+                <span lang="ar">مساعد الذكاء الاصطناعي</span>
+                <span class="hidden" lang="en">AI Assistant</span>
+            </button>
+            <button class="tab-btn" data-tab="contact">
+                <i class="fas fa-address-book"></i>
+                <span lang="ar">التواصل</span>
+                <span class="hidden" lang="en">Contact</span>
+            </button>
+            <button class="tab-btn" data-tab="rating">
+                <i class="fas fa-star"></i>
+                <span lang="ar">التقييم</span>
+                <span class="hidden" lang="en">Rating</span>
+            </button>
+        </div>
+        
+        <!-- About Tab -->
+        <div id="about" class="tab-content active">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-user-crown"></i>
+                    <span lang="ar">نبذة عن إمبراطور الفراغ</span>
+                    <span class="hidden" lang="en">About Void Emperor</span>
+                </h2>
+                
+                <div class="about-container">
+                    <div class="about-card">
+                        <div class="about-header">
+                            <div class="profile-img">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="profile-info">
+                                <h3 lang="ar">إمبراطور الفراغ</h3>
+                                <h3 class="hidden" lang="en">Void Emperor</h3>
+                                <p class="profile-title" lang="ar">حاكم مملكة الفراغ اللامتناهية</p>
+                                <p class="profile-title hidden" lang="en">Ruler of Infinite Void Kingdom</p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-content">
+                            <p lang="ar">
+                                مؤسس وقائد مملكة الفراغ الافتراضية. بدأت رحلتي في ديسمبر 2025 
+                                بهدف إنشاء عالم رقمي متميز حيث تلتقي التكنولوجيا بالإبداع.
+                                مملكة الفراغ تمثل رؤية مستقبلية تجمع بين الابتكار التقني والتميز الإبداعي.
+                                <br><br>
+                                اسمي عبدالرحمن حسني عبدالمنعم<br>
+                                العمر 21 سنة<br>
+                                متابع لكل الأنمي<br>
+                                أفضل أنمي: ون بيس
+                                <br><br>
+                                <img src="https://pbs.twimg.com/profile_images/2002412429314060288/p_sIw5NI_400x400.jpg" 
+                                     alt="لوجو الإمبراطورية" 
+                                     style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent);">
+                            </p>
+                            
+                            <p class="hidden" lang="en">
+                                Founder and leader of the virtual Void Kingdom. I started my journey 
+                                in December 2025 with the goal of creating a distinguished digital 
+                                world where technology meets creativity. The Void Kingdom represents 
+                                a futuristic vision that combines technical innovation and creative excellence.
+                                <br><br>
+                                My name is Abdul Rahman Hosni Abdul Moneim<br>
+                                Age: 21 years old<br>
+                                Anime enthusiast<br>
+                                Favorite anime: One Piece
+                                <br><br>
+                                <img src="https://pbs.twimg.com/profile_images/2002412429314060288/p_sIw5NI_400x400.jpg" 
+                                     alt="Empire Logo" 
+                                     style="max-width: 150px; border-radius: 10px; border: 2px solid var(--accent);">
+                            </p>
+                            
+                            <h4 style="color: var(--accent-light); margin: 20px 0 15px;">
+                                <i class="fas fa-cogs"></i>
+                                <span lang="ar">المهارات الرئيسية</span>
+                                <span class="hidden" lang="en">Core Skills</span>
+                            </h4>
+                            
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-name" lang="ar">تطوير الويب المتقدم</div>
+                                    <div class="skill-name hidden" lang="en">Advanced Web Development</div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 94%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-name" lang="ar">تطبيقات الهاتف</div>
+                                    <div class="skill-name hidden" lang="en">Mobile Applications</div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-name" lang="ar">تصميم واجهات المستخدم</div>
+                                    <div class="skill-name hidden" lang="en">UI/UX Design</div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-name" lang="ar">إدارة المشاريع التقنية</div>
+                                    <div class="skill-name hidden" lang="en">Technical Project Management</div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 96%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Achievements Tab -->
+        <div id="achievements" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-medal"></i>
+                    <span lang="ar">إنجازات إمبراطور الفراغ</span>
+                    <span class="hidden" lang="en">Void Emperor Achievements</span>
+                </h2>
+                
+                <div class="achievement-grid" id="achievementsGrid">
+                    <!-- Achievements will be loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Portfolio Tab -->
+        <div id="portfolio" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-images"></i>
+                    <span lang="ar">معرض أعمال إمبراطور الفراغ</span>
+                    <span class="hidden" lang="en">Void Emperor Portfolio</span>
+                </h2>
+                
+                <div class="portfolio-grid" id="portfolioGrid">
+                    <!-- Portfolio items will be loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Games Tab -->
+        <div id="games" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-gamepad"></i>
+                    <span lang="ar">ألعاب إمبراطور الفراغ</span>
+                    <span class="hidden" lang="en">Void Emperor Games</span>
+                </h2>
+                
+                <div class="games-intro">
+                    <p lang="ar">اختر لعبة للعب واختبار معلوماتك عن مملكة الفراغ</p>
+                    <p class="hidden" lang="en">Choose a game to play and test your knowledge about Void Kingdom</p>
+                </div>
+                
+                <div class="games-grid">
+                    <div class="game-card" id="quizGameCard">
+                        <div class="game-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 lang="ar">اختبار المعلومات</h3>
+                        <h3 class="hidden" lang="en">Knowledge Quiz</h3>
+                        <p lang="ar">اختبر معلوماتك عن إمبراطورية الفراغ</p>
+                        <p class="hidden" lang="en">Test your knowledge about Void Empire</p>
+                        <button class="game-btn" data-game="quiz">
+                            <i class="fas fa-play"></i>
+                            <span lang="ar">ابدأ اللعبة</span>
+                            <span class="hidden" lang="en">Start Game</span>
+                        </button>
+                    </div>
+                    
+                    <div class="game-card" id="memoryGameCard">
+                        <div class="game-icon">
+                            <i class="fas fa-memory"></i>
+                        </div>
+                        <h3 lang="ar">لعبة الذاكرة</h3>
+                        <h3 class="hidden" lang="en">Memory Game</h3>
+                        <p lang="ar">طابق البطاقات بأيقونات الفراغ</p>
+                        <p class="hidden" lang="en">Match cards with Void icons</p>
+                        <button class="game-btn" data-game="memory">
+                            <i class="fas fa-play"></i>
+                            <span lang="ar">ابدأ اللعبة</span>
+                            <span class="hidden" lang="en">Start Game</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game Area -->
+                <div id="gameContainer" class="hidden"></div>
+            </div>
+        </div>
+        
+        <!-- AI Assistant Tab -->
+        <div id="ai" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-robot"></i>
+                    <span lang="ar">مساعد إمبراطور الفراغ الذكي</span>
+                    <span class="hidden" lang="en">Void Emperor AI Assistant</span>
+                </h2>
+                
+                <div class="ai-container">
+                    <div class="ai-info">
+                        <div class="ai-card">
+                            <div class="ai-header">
+                                <div class="ai-avatar">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="ai-title">
+                                    <h3 lang="ar">مساعد إمبراطور الفراغ الذكي</h3>
+                                    <h3 class="hidden" lang="en">Void Emperor AI Assistant</h3>
+                                    <p class="ai-status" lang="ar">متصل ●</p>
+                                    <p class="ai-status hidden" lang="en">Online ●</p>
+                                </div>
+                            </div>
+                            
+                            <div class="ai-capabilities">
+                                <h4 style="color: var(--accent-light); margin-bottom: 15px;">
+                                    <i class="fas fa-bolt"></i>
+                                    <span lang="ar">إمكانياتي</span>
+                                    <span class="hidden" lang="en">My Capabilities</span>
+                                </h4>
+                                <div class="capabilities-grid">
+                                    <div class="capability">
+                                        <i class="fas fa-question-circle"></i>
+                                        <span lang="ar">الإجابة على الأسئلة</span>
+                                        <span class="hidden" lang="en">Answer Questions</span>
+                                    </div>
+                                    <div class="capability">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <span lang="ar">تقديم النصائح</span>
+                                        <span class="hidden" lang="en">Give Advice</span>
+                                    </div>
+                                    <div class="capability">
+                                        <i class="fas fa-history"></i>
+                                        <span lang="ar">تذكر المحادثات</span>
+                                        <span class="hidden" lang="en">Remember Conversations</span>
+                                    </div>
+                                    <div class="capability">
+                                        <i class="fas fa-brain"></i>
+                                        <span lang="ar">التعلم الذاتي</span>
+                                        <span class="hidden" lang="en">Self Learning</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-conversation">
+                        <div class="conversation-header">
+                            <h4 lang="ar">المحادثة</h4>
+                            <h4 class="hidden" lang="en">Conversation</h4>
+                            <button class="clear-chat-btn" id="clearChatBtn">
+                                <i class="fas fa-trash"></i>
+                                <span lang="ar">مسح المحادثة</span>
+                                <span class="hidden" lang="en">Clear Chat</span>
+                            </button>
+                        </div>
+                        
+                        <div class="messages-container" id="messagesContainer">
+                            <!-- Messages will appear here -->
+                        </div>
+                        
+                        <div class="typing-indicator hidden" id="typingIndicator">
+                            <div class="typing-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span lang="ar">جاري الكتابة...</span>
+                            <span class="hidden" lang="en">Typing...</span>
+                        </div>
+                        
+                        <div class="message-input">
+                            <div class="input-container">
+                                <input type="text" id="messageInput" 
+                                       placeholder="اكتب سؤالك هنا..." 
+                                       lang="ar">
+                                <input type="text" id="messageInputEn" 
+                                       class="hidden"
+                                       placeholder="Type your question here..." 
+                                       lang="en">
+                                <button id="sendMessageBtn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span lang="ar">إرسال</span>
+                                    <span class="hidden" lang="en">Send</span>
+                                </button>
+                            </div>
+                            <div class="quick-actions">
+                                <button class="quick-action-btn" data-question="ar" data-text="أخبرني عن إمبراطور الفراغ">
+                                    <span lang="ar">عن الإمبراطور</span>
+                                    <span class="hidden" lang="en">About Emperor</span>
+                                </button>
+                                <button class="quick-action-btn" data-question="ar" data-text="ما هي مشاريعك المستقبلية؟">
+                                    <span lang="ar">المستقبل</span>
+                                    <span class="hidden" lang="en">Future</span>
+                                </button>
+                                <button class="quick-action-btn" data-question="ar" data-text="كيف يمكنني تعلم البرمجة؟">
+                                    <span lang="ar">تعلم البرمجة</span>
+                                    <span class="hidden" lang="en">Learn Programming</span>
+                                </button>
+                                <button class="quick-action-btn" data-question="ar" data-text="ما هي نصائحك للنجاح؟">
+                                    <span lang="ar">نصائح للنجاح</span>
+                                    <span class="hidden" lang="en">Success Tips</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Tab -->
+        <div id="contact" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-network-wired"></i>
+                    <span lang="ar">طرق التواصل مع الإمبراطور</span>
+                    <span class="hidden" lang="en">Contact the Emperor</span>
+                </h2>
+                
+                <div class="contact-grid" id="contactGrid">
+                    <!-- Contact cards will be loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rating Tab -->
+        <div id="rating" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-star-half-alt"></i>
+                    <span lang="ar">تقييم موقع إمبراطور الفراغ</span>
+                    <span class="hidden" lang="en">Rate Void Emperor Site</span>
+                </h2>
+                
+                <div class="rating-container">
+                    <div class="rating-stats">
+                        <div class="average-rating" id="averageRating">0.0</div>
+                        <div class="stars" id="starsContainer">
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="total-ratings" id="totalRatings" lang="ar">(0 تقييم)</div>
+                        <div class="total-ratings hidden" lang="en">(0 ratings)</div>
+                    </div>
+                    
+                    <div class="rating-form">
+                        <h3 class="rating-title" lang="ar">أضف تقييمك</h3>
+                        <h3 class="rating-title hidden" lang="en">Add Your Rating</h3>
+                        
+                        <div class="rating-stars-input">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px; color: var(--text-secondary);">
+                            <span lang="ar">تقييمك:</span>
+                            <span class="hidden" lang="en">Your Rating:</span>
+                            <span id="selectedRating">0</span>/5
+                        </div>
+                        
+                        <textarea id="ratingComment" placeholder="اكتب تعليقك هنا..."></textarea>
+                        
+                        <button class="btn" id="submitRating">
+                            <i class="fas fa-paper-plane"></i>
+                            <span lang="ar">إرسال التقييم</span>
+                            <span class="hidden" lang="en">Submit Rating</span>
+                        </button>
+                    </div>
+                    
+                    <div class="recent-ratings">
+                        <h3 style="color: var(--accent-light); margin-bottom: 20px;">
+                            <span lang="ar">آخر التقييمات</span>
+                            <span class="hidden" lang="en">Recent Ratings</span>
+                        </h3>
+                        <div id="ratingsList">
+                            <!-- Ratings will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p lang="ar">© 2025 إمبراطور الفراغ. جميع الحقوق محفوظة لمملكة الفراغ.</p>
+            <p class="hidden" lang="en">© 2025 Void Emperor. All rights reserved to Void Kingdom.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
